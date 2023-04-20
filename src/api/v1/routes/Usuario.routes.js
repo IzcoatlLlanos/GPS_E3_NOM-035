@@ -4,7 +4,9 @@ import * as usuarioController from '../controllers/Usuario.controller';
 const router = Router();
 
 router.get('/', usuarioController.getUsuariosList);
+router.post('/', usuarioController.postUsuarioItem);
 router.get('/:id', usuarioController.getUsuarioItem);
+router.put('/:id', usuarioController.putUsuarioItem);
 
 //router.get('/:id', prodServController.getProdServItem);
 export default router;

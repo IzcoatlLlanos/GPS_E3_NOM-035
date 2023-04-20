@@ -1,0 +1,36 @@
+@api = http://localhost:3020/api/v1/Usuario
+### GET
+GET {{api}}
+### GET ITEM
+GET {{api}}/Brian
+### GET ITEM
+GET {{api}}/Jaimito?keyType=BK
+
+###PUT Usuarios ITEM
+POST {{api}}
+Content-Type: application/json
+
+{
+    "IdUsuarioOK": "15402034",
+    "IdUsuarioBK": "Brian",
+    "Nombres": "Brian Emanuel",
+    "Apellidos": "Navarro", 
+    "Clave": "123",
+    "CorreoEle": "Pirris@ittepic.com.mx", 
+    "Celular": "3111698066"
+
+}
+
+###PUT Usuarios ITEM
+PUT {{api}}/Jaimito
+Content-Type: application/json
+
+{
+    "IdUsuarioBK": "Jared",
+    "Nombres": "Jared de Jesus",
+    "Apellidos": "Zavala Leal", 
+    "Clave": "184011",
+    "CorreoEle": "jjared@ittepic.com.mx", 
+    "Celular": "3112156489"
+
+}
