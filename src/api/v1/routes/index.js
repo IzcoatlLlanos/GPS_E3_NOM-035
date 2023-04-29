@@ -8,7 +8,7 @@ const routerAPI = (app) => {
   const api = config.API_URL;
   app.use(api, router);
   // Routes
-  router.use('/Usuario', usuarioRoute);
+  router.use('/usuarios', usuarioRoute);
   // Return Router
   return router;
 };

@@ -5,9 +5,13 @@ const usuariosSchema = new mongoose.Schema({
     IdUsuarioBK: { type : String },
     Nombres: { type : String} ,
     Apellidos: { type : String} ,
+    Hotel: { type : String} ,
+    Rol: { type : String} ,
     Clave: { type : String} ,
     CorreoEle: { type : String} ,
     Celular: { type : String} ,
+    Generated: { type: Boolean, default: false},
+    Activo: { type: Boolean, default: true},
     detail_row: {
         _id: false,
         Activo: { type : String, default : 'S' },

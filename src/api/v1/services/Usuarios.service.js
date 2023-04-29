@@ -1,37 +1,50 @@
 import Usuario from '../models/Usuario.model';
 import boom from '@hapi/boom';
 
+export const getGerentesList = async () => {
+    try {
+        const gerList = await Usuario.find({ Rol: '2' });
+        return {success: true, gerList};
+    } catch (error) {
+        return {success: false, error}
+    }
+}
+
 export const getUsuariosList = async () => {
     try {
-        return await Usuario.find();
+        const usersList = await Usuario.find();
+        return {success: true,usersList};
     } catch (error) {
-        throw boom.internal(error);
+        return {success: false, error};
     }
 };
 
 export const getUsuarioItem = async (idUsuario, keyType) => {
     try {
-        if (keyType=='OK') return await Usuario.findOne({IdUsuarioOK: idUsuario});
-        else if (keyType=='BK') return await Usuario.findOne({IdUsuarioBK: idUsuario});
+        let userItem;
+        if (keyType=='OK') userItem = await Usuario.findOne({IdUsuarioOK: idUsuario});
+        else if (keyType=='BK') userItem = await Usuario.findOne({IdUsuarioBK: idUsuario});
+        return {success: true, userItem};
     } catch (error) {
-        throw boom.internal(error);
+        return {success: false, error};
     }
 };
 
-export const putUsuarioItem = async (idUsuario, usuarioItem, keyType) => {
+export const putUsuarioItem = async (idUsuario, usuarioItem) => {
     try {
-        if (keyType=='OK') return await Usuario.findOneAndUpdate({ IdUsuarioOK: idUsuario }, usuarioItem, {new: true});
-        else if (keyType=='BK') return await Usuario.findOneAndUpdate({ IdUsuarioBK: idUsuario }, usuarioItem, {new: true});
+        const userUpdated = await Usuario.findOneAndUpdate({ IdUsuarioOK: idUsuario }, usuarioItem, {new: true});
+        return {success: true, userUpdated};
     } catch (error) {
-        throw boom.internal(error);
+        return {success: false, error};
     }
 };
 
 export const postUsuarioItem = async (usuarioItem) => {
     try {
         const newUsuario = await Usuario(usuarioItem);
-        return newUsuario.save();
+        newUsuario.save();
+        return {success: true, newUsuario};
     } catch (error) {
-        throw boom.internal(error);
+        return {success: false, error}
     }
 };

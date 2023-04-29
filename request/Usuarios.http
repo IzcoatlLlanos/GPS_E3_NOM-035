@@ -1,4 +1,4 @@
-@api = http://localhost:3020/api/v1/Usuario
+@api = http://localhost:3020/api/v1/usuarios
 ### GET
 GET {{api}}
 ### GET ITEM
