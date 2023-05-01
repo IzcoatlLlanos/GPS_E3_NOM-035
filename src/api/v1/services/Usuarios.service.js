@@ -48,3 +48,12 @@ export const postUsuarioItem = async (usuarioItem) => {
         return {success: false, error}
     }
 };
+
+export const deleteUsuarioItem = async (idUsuario) => {
+    try {
+        const userDeleted = await Usuario.findOneAndDelete({ IdUsuarioOK: idUsuario });
+        return {success: true, userDeleted};
+    } catch (error) {
+        return {success: false, error};
+    }
+}

@@ -23,7 +23,7 @@ export const getUsuariosList = async (req, res, next) => {
 
 export const getUsuarioItem = async (req, res, next) => {
     const { id } = req.params;
-    const keyType = req.query.keyType || 'BK';
+    const keyType = req.query.keyType || 'OK';
     try {
         const usuarioItem = await usuarioService.getUsuarioItem(id, keyType);
         if (!usuarioItem.success) throw boom.notFound(usuarioItem.error);
@@ -51,6 +51,17 @@ export const postUsuarioItem = async (req, res, next) => {
         const usuarioAdded = await usuarioService.postUsuarioItem(usuarioItem);
         if (!usuarioAdded.success) throw boom.badData(usuarioAdded.error);
         else if (usuarioAdded.success) res.status(200).json(usuarioAdded);
+    } catch (error) {
+        next(error);
+    }
+};
+
+export const deleteUsuarioItem = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const usuarioDeleted = await usuarioService.deleteUsuarioItem(id);
+        if (!usuarioDeleted.success) throw boom.notFound(usuarioDeleted.error);
+        else if (usuarioDeleted.success) res.status(200).json(usuarioDeleted);
     } catch (error) {
         next(error);
     }
