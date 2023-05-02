@@ -7,12 +7,11 @@ const personaSchema = new mongoose.Schema({
     Hotel: { type : String },
     CorreoEle: { type : String },
     Celular: { type : String },
-    Encuestas:[{
-        IdRespuestaOK: { type : String},
-        IdEncuestaOK: { type : String},
-        Enlace: { type : String},
-        Contestada: { type : Boolean},
-        Fecha: { type : Date, default: Date.now }
+    Encuestas: [{
+        IdRespuestasOK: { type : String }, //Formado a partir de el IdPersonaOK
+        Enlace: { type : String },
+        IdEncuestaOK: { type : String },
+        Contestada: { type: Boolean }
     }],
     detail_row: {
         _id: false,
