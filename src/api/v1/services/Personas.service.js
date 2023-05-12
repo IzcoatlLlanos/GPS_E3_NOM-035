@@ -45,11 +45,11 @@ export const deletePersonaItem = async (idPersonaOK) => {
 
 export const pushEncuestaItem = async (idPersonaOK, idRespuestasOK, encuestaItem) => {
     try {
-        const personaItem = await Persona.findOne({ IdPersonaOK: idPersona });
+        const personaItem = await Persona.findOne({ IdPersonaOK: idPersonaOK });
         const { Encuestas } = personaItem;
 
         const index = Encuestas.findIndex(
-            (encuesta) => encuesta.IdRespuestasOK == idRespuestasOK
+            (encuesta) => encuesta.IdRespuestaOK == idRespuestasOK
         );
 
         if (index>=0) {
@@ -58,7 +58,7 @@ export const pushEncuestaItem = async (idPersonaOK, idRespuestasOK, encuestaItem
             Encuestas.push(encuestaItem);
         }
 
-        const personaUpdated = await Pesona.findOneAndUpdate( 
+        const personaUpdated = await Persona.findOneAndUpdate( 
             { IdPersonaOK: idPersonaOK },
             { $set: { Encuestas } },
             {new: true}

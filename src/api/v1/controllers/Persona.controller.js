@@ -46,5 +46,17 @@ export const deletePersonaItem = async (req, res, next) => {
     }
 };
 
+export const pushEncuestaItem = async (req, res, next) => {
+    try {
+        const { idPersonaOK, idRespuestasOK } = req.params;
+        const encuestaItem = req.body;
+        const personaUpdated = await personasService.pushEncuestaItem(idPersonaOK,idRespuestasOK,encuestaItem);
+        if (!personaUpdated.success) throw boom.badData(personaUpdated.error);
+        else if (personaUpdated.success) res.status(200).json(personaUpdated);
+    } catch (error) {
+        return {success: false, error};
+    }
+};
+
 
 

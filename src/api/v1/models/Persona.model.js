@@ -8,10 +8,12 @@ const personaSchema = new mongoose.Schema({
     CorreoEle: { type : String },
     Celular: { type : String },
     Encuestas: [{
-        IdRespuestasOK: { type : String }, //Formado a partir de el IdPersonaOK
+        _id: false,
+        IdRespuestaOK: { type : String }, //Formado a partir de el IdPersonaOK
         Enlace: { type : String },
         IdEncuestaOK: { type : String },
-        Contestada: { type: Boolean }
+        Contestada: { type: Boolean },
+        Fecha: { type : Date, default: Date.now },
     }],
     detail_row: {
         _id: false,
