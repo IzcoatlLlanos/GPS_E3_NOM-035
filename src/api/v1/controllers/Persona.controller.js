@@ -1,6 +1,17 @@
 import * as personasService from "../services/Personas.service";
 import boom from "@hapi/boom";
 
+export const getPersonaItem = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const personaItem = await personasService.getPersonaItem(id);
+        if (!personaItem.success) throw boom.notFound(personaItem.error);
+        else if (personaItem.success) res.status(200).json(personaItem);
+    } catch (error) {
+        next(error);
+    }
+};
+
 export const getPersonasListByHotel = async (req, res, next) => {
     try {
         const { id } = req.params;

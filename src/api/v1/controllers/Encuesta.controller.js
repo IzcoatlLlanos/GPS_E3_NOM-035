@@ -17,7 +17,7 @@ export const getEncuestasGuiaItem = async (req, res, next) => {
         const keyType = req.query.keyType || 'OK';
         const encuestaGuiaItem = await encuestaService.getEncuestasGuiaItem(id, keyType);
         if (!encuestaGuiaItem.success) throw boom.notFound(encuestaGuiaItem.error);
-        else if (encuestaGuiaItem.succes) res.status(200).json(encuestaGuiaItem);
+        else if (encuestaGuiaItem.success) res.status(200).json(encuestaGuiaItem);
     } catch (error) {
         next(error);
     }

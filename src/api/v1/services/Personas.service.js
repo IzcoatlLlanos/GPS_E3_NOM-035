@@ -1,5 +1,16 @@
 import Persona from '../models/Persona.model';
 
+export const getPersonaItem = async (idPersonaOK) => {
+    try {
+        const personaItem = await Persona.find({
+            IdPersonaOK: idPersonaOK
+        });
+        return {success: true, personaItem};
+    } catch (error) {
+        return {success: false, error};
+    }
+};
+
 export const getPersonasListByHotel = async (hotel) => {
     try {
         const personasList = await Persona.find({ Hotel: hotel });

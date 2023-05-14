@@ -4,6 +4,7 @@ import * as personasController from '../controllers/Persona.controller';
 const router = Router();
 
 router.get('/:id', personasController.getPersonasListByHotel);
+router.get('/uno/:id', personasController.getPersonaItem);
 router.post('/', personasController.postPersonaItem);
 router.put('/:id', personasController.putPersonaItem);
 router.delete('/:id', personasController.deletePersonaItem);
