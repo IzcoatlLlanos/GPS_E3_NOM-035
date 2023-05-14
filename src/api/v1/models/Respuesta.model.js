@@ -15,6 +15,7 @@ const respuestaSchema = new mongoose.Schema({
         Nombre          : { type : String },
         Tipo            : { type : String },
         Respuestas: [{
+            _id: false,
             IdPreguntaOK    : { type : String },
             Respuesta       : { type : String },
             Valor           : { type : Number }

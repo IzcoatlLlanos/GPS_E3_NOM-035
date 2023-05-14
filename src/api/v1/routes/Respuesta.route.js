@@ -8,5 +8,6 @@ router.post('/', respuestasController.postRespuestaItem);
 router.get('/:id', respuestasController.getRespuestasItem);
 router.put('/:id', respuestasController.putRespuestasItem);
 router.delete('/:id', respuestasController.deleteRespuestaItem);
+router.put('/seccion/:idRespuestaOK/:idSeccionOK', respuestasController.pushSeccionItem)
 
 export default router;

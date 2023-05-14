@@ -80,7 +80,5 @@ export const pushEncuestaItem = async (idPersonaOK, idRespuestasOK, encuestaItem
         return {success: false, error};
     }
 };
-
-
-
-
+//8000 Naranja
+//8000 tinto

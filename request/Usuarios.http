@@ -11,13 +11,19 @@ POST {{api}}
 Content-Type: application/json
 
 {
-    "IdUsuarioOK": "15402034",
-    "IdUsuarioBK": "Brian",
-    "Nombres": "Brian Emanuel",
-    "Apellidos": "Navarro", 
-    "Clave": "123",
-    "CorreoEle": "Pirris@ittepic.com.mx", 
-    "Celular": "3111698066"
+
+  "IdUsuarioOK": "18401145",
+  "IdUsuarioBK": "llanos",
+  "Nombres": "Hector Izcoatl",
+  "Apellidos": "Llanos Godoy",
+  "Hotel": "Las Palomas",
+  "Rol": "1",
+  "Clave": "123",
+  "CorreoEle": "heizllanosgo@ittepic.com.mx",
+  "Celular": "3112356094",
+  "Generated": false,
+  "Activo": true
+
 
 }
 

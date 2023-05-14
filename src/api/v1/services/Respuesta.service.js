@@ -53,3 +53,31 @@ export const deleteRespuestaItem = async (idRespuestaOK) => {
         return { success: false, error };
     }
 };
+
+export const pushSeccionItem = async (idRespuestaOK, idSeccionOK, seccionItem) => {
+    try {
+        const respuestaItem = await RespuestaModel.findOne(
+            { IdRespuestaOK: idRespuestaOK }
+        );
+        const { Seccion } = respuestaItem;
+        const index = Seccion.findIndex(
+            (Seccion) => Seccion.IdSeccionOK == idSeccionOK
+        );
+
+        if (index>=0) {
+            Seccion[index] = seccionItem;
+        } else {
+        Seccion.push(seccionItem);
+        }
+
+        const respuestaUpdated = await RespuestaModel.findOneAndUpdate( 
+            { IdRespuestaOK: idRespuestaOK },
+            { $set: { seccionItem } },
+            {new: true}
+        );
+
+        return {success: true, respuestaUpdated};
+    } catch (error) {
+        return {success: false, error};
+    }
+};

@@ -55,3 +55,17 @@ export const deleteRespuestaItem = async (req, res, next) => {
         next(error);
     }
 };
+
+export const pushSeccionItem = async (req, res, next) => {
+    try {
+        const { idRespuestaOK, idSeccionOK } = req.params;
+        const seccionItem = req.body;
+        const respuestaUpdated = await respuestaService.pushSeccionItem(
+            idRespuestaOK,idSeccionOK,seccionItem
+        );
+        if (!respuestaUpdated.success) throw boom.notFound(respuestaUpdated.error);
+        else if (respuestaUpdated.success) res.status(200).json(respuestaUpdated);
+    } catch (error) {
+        next(error);
+    }
+};
