@@ -69,3 +69,14 @@ export const pushSeccionItem = async (req, res, next) => {
         next(error);
     }
 };
+
+export const getRespuestaListByIdPersonaOK = async (req, res, next) => {
+    try {
+        const { idPersonaOK } = req.params;
+        const respuestaList = await respuestaService.getRespuestaListByIdPersonaOK(idPersonaOK);
+        if (!respuestaList.success) throw boom.notFound(respuestaList.error);
+        else if (respuestaList.success) res.status(200).json(respuestaList);
+    } catch (error) {
+        next(error);
+    }
+};

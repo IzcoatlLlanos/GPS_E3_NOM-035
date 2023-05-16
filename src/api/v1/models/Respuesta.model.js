@@ -8,12 +8,13 @@ const respuestaSchema = new mongoose.Schema({
     Hotel           : { type : String },
     Contestada      : { type : Boolean },
     Enlace          : { type : String },
-    Puntuacion      : { type : String },
+    Puntuacion      : { type : Number },
     Seccion         : [{
         _id: false,
         IdSeccionOK     : { type : String },
         Nombre          : { type : String },
         Tipo            : { type : String },
+        Resultado       : { type : Number },
         Respuestas: [{
             _id: false,
             IdPreguntaOK    : { type : String },

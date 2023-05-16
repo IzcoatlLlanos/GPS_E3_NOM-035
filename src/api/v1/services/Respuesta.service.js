@@ -60,6 +60,7 @@ export const pushSeccionItem = async (idRespuestaOK, idSeccionOK, seccionItem) =
             { IdRespuestaOK: idRespuestaOK }
         );
         const { Seccion } = respuestaItem;
+
         const index = Seccion.findIndex(
             (Seccion) => Seccion.IdSeccionOK == idSeccionOK
         );
@@ -72,11 +73,22 @@ export const pushSeccionItem = async (idRespuestaOK, idSeccionOK, seccionItem) =
 
         const respuestaUpdated = await RespuestaModel.findOneAndUpdate( 
             { IdRespuestaOK: idRespuestaOK },
-            { $set: { seccionItem } },
+            { $set: { Seccion } },
             {new: true}
         );
 
         return {success: true, respuestaUpdated};
+    } catch (error) {
+        return {success: false, error};
+    }
+};
+
+export const getRespuestaListByIdPersonaOK = async (idPersonaOK) => {
+    try {
+        const respuestaList = await RespuestaModel.find(
+            { IdPersonaOK: idPersonaOK }
+        );
+        return {success: true, respuestaList};
     } catch (error) {
         return {success: false, error};
     }
